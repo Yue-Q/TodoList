@@ -1,15 +1,19 @@
 import React from "react";
-import { actionCreater } from "../Redux/redux";
+import { actionCreater, store } from "../Redux/redux";
 
 const MyReduxContext = React.createContext(null);
 
 export const myConnect = (mapStateToProps, mapDispatchToProps) => (WrappedComponent) =>
   class extends React.Component {
     static contextType = MyReduxContext; //access the store provided in line 17
+    componentDidMount() {
+      const store = this.context;
+      store.subscribe(() => this.forceUpdate());
+    }
     render() {
       const store = this.context;
       console.log(this.context);
-      return <WrappedComponent count={store.getState().value} add={() => store.dispatch(actionCreater.incremented())} />;
+      return <WrappedComponent counter={store.getState().value} add={() => store.dispatch(actionCreater.incremented())} />;
     }
   };
 
