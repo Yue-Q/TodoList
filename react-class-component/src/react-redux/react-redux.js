@@ -12,8 +12,9 @@ export const myConnect = (mapStateToProps, mapDispatchToProps) => (WrappedCompon
     }
     render() {
       const store = this.context;
-      console.log(this.context);
-      return <WrappedComponent counter={store.getState().value} add={() => store.dispatch(actionCreater.incremented())} />;
+      const WrappedComponentProps = mapStateToProps(store.getState());
+      const WrappedComponentDispatch = mapDispatchToProps(store.dispatch);
+      return <WrappedComponent {...WrappedComponentProps} {...WrappedComponentDispatch} {...this.props} />;
     }
   };
 
