@@ -53,6 +53,7 @@ function myCreateStore(reducerFn) {
 
   function subscribe(callbackFn) {
     listeners.push(callbackFn);
+    return listeners.splice(listeners.indexOf(callbackFn), 1); //remove the callBackFunc from the listener
   }
   function getState() {
     return state;

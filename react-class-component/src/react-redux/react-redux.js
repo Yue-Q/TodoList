@@ -8,8 +8,13 @@ export const myConnect = (mapStateToProps, mapDispatchToProps) => (WrappedCompon
     static contextType = MyReduxContext; //access the store provided in line 17
     componentDidMount() {
       const store = this.context;
-      store.subscribe(() => this.forceUpdate());
+      this.unsub = store.subscribe(() => this.forceUpdate());
     }
+
+    componentWillUnmount() {
+      this.unsub();
+    }
+
     render() {
       const store = this.context;
       const WrappedComponentProps = mapStateToProps(store.getState());
