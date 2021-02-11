@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import RandomColorText from "../randomColorText/randomColorText";
 import "./header.css";
+import Counter from "../counter/counter";
 
 class Logo extends Component {
   render() {
@@ -8,6 +9,7 @@ class Logo extends Component {
       <div className="header__logo">
         {" "}
         <RandomColorText>My TODO APP</RandomColorText>
+        <Counter />
       </div>
     );
   }

@@ -5,6 +5,7 @@ import TodoList from "./components/TODO/todoList";
 import WithTodosData from "./renderProps/withTodosData";
 import ColorfulTodo from "./components/TODO/colorfulTODO";
 import TODO from "./components/TODO/TODO";
+import Counter from "./components/counter/counter";
 
 function App() {
   return (

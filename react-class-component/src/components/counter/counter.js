@@ -1,7 +1,8 @@
 import React from "react";
 
-import { store, actionCreater } from "../../Redux/Redux";
+import { actionCreater } from "../../Redux/redux";
 import { connect } from "react-redux";
+import { myConnect } from "../../react-redux/react-redux";
 
 // class Counter extends React.Component {
 //   componentDidMount() {
@@ -55,4 +56,4 @@ const mapDispatchToProps = (dispatch /*, ownProps*/) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default myConnect(mapStateToProps, mapDispatchToProps)(Counter);
