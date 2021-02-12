@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import RandomColorText from "../randomColorText/randomColorText";
 import "./header.css";
-import Counter from "../counter/counter";
+import { MyLink } from "../../MyRouter/myRouter";
+import { Link } from "react-router-dom";
 
 class Logo extends Component {
   render() {
@@ -9,7 +10,6 @@ class Logo extends Component {
       <div className="header__logo">
         {" "}
         <RandomColorText>My TODO APP</RandomColorText>
-        <Counter />
       </div>
     );
   }
@@ -19,10 +19,10 @@ class Menu extends Component {
   render() {
     return (
       <nav className="header__menu">
-        <a className="header__menu-item">Home</a>
-        <a className="header__menu-item">TODO APP</a>
-        <a className="header__menu-item">TODO Count</a>
-        <a className="header__menu-item">About Us</a>
+        <MyLink to="/count">Count</MyLink>
+        <MyLink to="/todoapp">ToDoApp</MyLink>
+        <MyLink to="/about">About</MyLink>
+        <MyLink to="/">Home</MyLink>
       </nav>
     );
   }
