@@ -27,11 +27,15 @@ export class MyRoute extends React.Component {
     }
     return null;
   }
+
+  handlePopState = () => this.forceUpdate();
   componentDidMount() {
     routeInstance.push(this);
-    window.addEventListener("popstate", () => {
-      this.forceUpdate();
-    });
+    window.addEventListener("popstate", this.handlePopState);
+  }
+  componentWillUnmount() {
+    routeInstance = routeInstance.filter((instance) => instance !== this);
+    window.removeEventListener(this.handlePopState);
   }
 }
 
