@@ -11,6 +11,22 @@ const pathMatch = (path, exact) => {
 };
 
 export class MyRoute extends React.Component {
+  routerRegister = (routeIns) => {
+    routeInstance.push(routeIns);
+    const handlePopState = () => this.forceUpdate();
+    window.addEventListener("popstate", handlePopState);
+    return function () {
+      routeInstance = routeInstance.filter((instance) => instance !== routeIns);
+      window.removeEventListener(handlePopState);
+    };
+  };
+  componentDidMount() {
+    this._unregis = this.routerRegister(this);
+  }
+
+  componentWillUnmount() {
+    this._unregis();
+  }
   render() {
     const { path, children, exact = false, component, render } = this.props; //default value is false
     console.log(exact);
@@ -26,16 +42,6 @@ export class MyRoute extends React.Component {
       return children;
     }
     return null;
-  }
-
-  handlePopState = () => this.forceUpdate();
-  componentDidMount() {
-    routeInstance.push(this);
-    window.addEventListener("popstate", this.handlePopState);
-  }
-  componentWillUnmount() {
-    routeInstance = routeInstance.filter((instance) => instance !== this);
-    window.removeEventListener(this.handlePopState);
   }
 }
 
