@@ -79,6 +79,7 @@
     position:relative;
     padding-left: 10px;
     display: flex;
+    align-items: center;
 }
 .todo__item:hover {
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -91,6 +92,16 @@
     width: 545.896px;
     overflow: hidden;
 }
+
+.todo__item__text--completed {
+    text-decoration: line-through;
+    color:#5d687f;
+}
+
+input[type="checkbox" i] {
+    margin: 0 10px;
+}
+
 .todo__delete-icon {
     padding: 0 5px;
     cursor: pointer;

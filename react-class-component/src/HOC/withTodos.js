@@ -28,6 +28,12 @@ export const withTodos = (WrappedComponnet) =>
       });
     }
 
+    handleCompleteTodo(id) {
+      this.setState((prevState) => ({
+        todos: prevState.todos.map((item) => (item.id === id ? { ...item, completed: true } : item)),
+      }));
+    }
+
     componentDidMount() {
       fetchAllTodos().then((data) => {
         console.log(data);
@@ -45,6 +51,7 @@ export const withTodos = (WrappedComponnet) =>
           todos={this.state.todos}
           addTodo={this.hanldeAddTodo}
           removeTodo={this.handleRemoveTodo}
+          completeTodo={this.handleCompleteTodo}
         ></WrappedComponnet>
       );
     }

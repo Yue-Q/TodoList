@@ -38,7 +38,7 @@ class TodoList extends Component {
             </span>
           </div>
         </form>
-        <ul className="todo__content">{this.props.children(this.props.todos, this.props.removeTodo)}</ul>
+        <ul className="todo__content">{this.props.children(this.props.todos, this.props.removeTodo, this.props.completeTodo)}</ul>
       </section>
     );
   }

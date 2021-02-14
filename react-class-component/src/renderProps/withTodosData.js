@@ -8,6 +8,7 @@ export default class WithTodosData extends React.Component {
     };
     this.hanldeAddTodo = this.hanldeAddTodo.bind(this);
     this.handleRemoveTodo = this.handleRemoveTodo.bind(this);
+    this.handleCompleteTodo = this.handleCompleteTodo.bind(this);
   }
 
   hanldeAddTodo(newTodo) {
@@ -26,6 +27,12 @@ export default class WithTodosData extends React.Component {
     });
   }
 
+  handleCompleteTodo(id) {
+    this.setState((prevState) => ({
+      todos: prevState.todos.map((item) => (item.id === id ? { ...item, completed: true } : item)),
+    }));
+  }
+
   componentDidMount() {
     fetchAllTodos().then((data) => {
       this.setState({
@@ -36,9 +43,9 @@ export default class WithTodosData extends React.Component {
 
   render() {
     if (typeof this.props.render === "function") {
-      return this.props.render(this.state.todos, this.hanldeAddTodo, this.handleRemoveTodo);
+      return this.props.render(this.state.todos, this.hanldeAddTodo, this.handleRemoveTodo, this.handleCompleteTodo);
     } else if (typeof this.props.children === "function") {
-      return this.props.children(this.state.todos, this.hanldeAddTodo, this.handleRemoveTodo);
+      return this.props.children(this.state.todos, this.hanldeAddTodo, this.handleRemoveTodo, this.handleCompleteTodo);
     }
 
     return null;
