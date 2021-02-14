@@ -1,0 +1,9 @@
+.btn--liked {
+    background-color: aquamarine;
+    border: 2px solid red;
+}
+
+button {
+    height: 40px;
+    width: 100px;
+}

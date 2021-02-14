@@ -8,6 +8,7 @@ import TODO from "./components/TODO/TODO";
 import Counter from "./components/counter/counter";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { MyRoute } from "./MyRouter/myRouter";
+import LikeButton from "./components/likeButton/likeButton";
 function App() {
   return (
     <Router>
@@ -17,6 +18,7 @@ function App() {
           <Counter />
         </MyRoute>
         <MyRoute exact path="/todoapp">
+          <LikeButton />
           <WithTodosData render={(todos) => <TodoCounts count={todos.length} />} />
           {/* <WithTodosData render={(todos, addTodo, removeTodo)=><TodoList todos={todos} addTodo={addTodo} removeTodo={removeTodo} />} /> */}
           <WithTodosData>
